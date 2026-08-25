@@ -1,5 +1,6 @@
 
 <?php require "templates/header.php" ?>
+
 <main>
     <h2>La liste des voitures</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptate ipsum tempore nulla esse! Culpa blanditiis libero soluta alias voluptate?</p>
@@ -10,7 +11,7 @@
                 ?>
                 <tr>
                 <td><?=$voiture->nom?></td>
-                <td><?=$voiture->puissance?></td>
+                <td><?=$voiture->puissance?>ch</td>
                 <td><?=$voiture->prix?>€</td>
             </tr>
             <?php } ?>

@@ -25,13 +25,13 @@ class VoitureRepository {
 
             // En l'état $stmt n'est pas exploitable :on va le manipuler pour en faire un tableau qui contiendra des objets de type Voiture (grâce à la classe Voiture)
 
-        $voiture = [];
+        $voitures = [];
 
         // var_dump($stmt->fetchAll(PDO::FETCH_ASSOC));
         // La méthode fetch
 
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $voiture[] = new Voiture(
+            $voitures[] = new Voiture(
                 $row["id"],
                 $row["nom"],
                 $row["puissance"],
@@ -39,7 +39,7 @@ class VoitureRepository {
                 $row["marque_id"],
                 );
         }
-        return $voiture;
+        return $voitures;
     }
 
     public function findByMarqueId(int $marqueId): array
@@ -54,7 +54,7 @@ class VoitureRepository {
         ]);
 
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $voiture[] = new Voiture(
+            $voitures[] = new Voiture(
                 $row["id"],
                 $row["nom"],
                 $row["puissance"],
@@ -62,6 +62,6 @@ class VoitureRepository {
                 $row["marque_id"],
             );
         }
-        return $voiture;
+        return $voitures;
     }
 }
