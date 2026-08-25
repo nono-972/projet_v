@@ -12,6 +12,7 @@
 <body>
 
 <header>
+    <img src="images/Auto_technologie.png" alt="logo constructeur automobile" class="logo">
     <h1>Constructeur automobile</h1>
 
       <nav>

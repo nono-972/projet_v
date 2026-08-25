@@ -12,12 +12,12 @@ class VoitureRepository {
     {
         $sql = "
             SELECT 
-                voitures.id,
-                voitures.nom,
-                voitures.puissance,
-                voitures.prix,
-                voitures.marque_id
-            FROM voitures;
+                voiture.id,
+                voiture.nom,
+                voiture.puissance,
+                voiture.prix,
+                voiture.marque_id
+            FROM voiture;
         ";
 
         //   this->pdo représente la connexion actuelle : on applique dessus la methode query()  qui va lancer la requête et je récupère le résultat de ce traitement dans la variable $stmt. $stmt représente donc un objet PDOStatement : ca regroupe la requête et son résultat
@@ -25,13 +25,13 @@ class VoitureRepository {
 
             // En l'état $stmt n'est pas exploitable :on va le manipuler pour en faire un tableau qui contiendra des objets de type Voiture (grâce à la classe Voiture)
 
-        $voitures = [];
+        $voiture = [];
 
         // var_dump($stmt->fetchAll(PDO::FETCH_ASSOC));
         // La méthode fetch
 
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $voitures[] = new Voiture(
+            $voiture[] = new Voiture(
                 $row["id"],
                 $row["nom"],
                 $row["puissance"],
@@ -39,13 +39,13 @@ class VoitureRepository {
                 $row["marque_id"],
                 );
         }
-        return $voitures;
+        return $voiture;
     }
 
     public function findByMarqueId(int $marqueId): array
     {
         $sql = "
-            SELECT * FROM voitures WHERE voitures.marque_id = :marqueId;
+            SELECT * FROM voiture WHERE voiture.marque_id = :marqueId;
         ";
 
         $stmt = $this->pdo->prepare($sql);
@@ -54,7 +54,7 @@ class VoitureRepository {
         ]);
 
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $voitures[] = new Voiture(
+            $voiture[] = new Voiture(
                 $row["id"],
                 $row["nom"],
                 $row["puissance"],
@@ -62,6 +62,6 @@ class VoitureRepository {
                 $row["marque_id"],
             );
         }
-        return $voitures;
+        return $voiture;
     }
 }
