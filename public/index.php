@@ -7,4 +7,9 @@ $voitureRepository=(new VoitureRepository($pdo));
 $marqueRepository=(new MarqueRepository($pdo));
 
 $controller = new VoitureController($voitureRepository, $marqueRepository);
-$controller->home();
+
+if(isset($_GET['form'])){
+    $controller->createMarque();
+}else{
+    $controller->home();
+}

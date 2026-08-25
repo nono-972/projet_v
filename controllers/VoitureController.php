@@ -20,10 +20,28 @@ class VoitureController {
 
         if (isset($_GET['marque'])) {
             $voitures = $this->voitureRepository->findByMarqueId((int)$_GET['marque']);
+           require __DIR__ . "/../views/home.php";
+
         } else {
-            $voitures = $this->voitureRepository->findAll();
+                $voitures = $this->voitureRepository->findAll();
+            require __DIR__ . "/../views/home.php";
         }
 
-        require __DIR__ . "/../views/home.php";
+    }
+
+    public function createMarque(): void 
+    {
+      $marques = $this->marqueRepository->findAll();
+
+      if($_SERVER["REQUEST_METHOD"] === "POST"){
+        $nom = $_POST["nom"];
+        $marque = new Marque(0, $nom);
+        $this->marqueRepository->create($marque);
+      }
+      require __DIR__ . "/../views/formMarque.php";
+        echo "<div style= background: white'>";
+        
+        var_dump($_POST,$_GET);
+        echo "<div>";
     }
 }

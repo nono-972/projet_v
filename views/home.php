@@ -12,7 +12,7 @@
                 <tr>
                 <td><?=$voiture->nom?></td>
                 <td><?=$voiture->puissance?>ch</td>
-                <td><?=$voiture->prix?>€</td>
+                <td class="bold"><?= number_format( $voiture->prix, 0, ',', ' ') ?>€</td>
             </tr>
             <?php } ?>
         </tbody>

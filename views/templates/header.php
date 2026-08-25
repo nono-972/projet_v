@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +9,7 @@
 <body>
 
     <header>
-        <img src="images/Auto_technologie.png" alt="logo constructeur automobile" class="logo">
+        <img src="images/Auto_technologie.jpg" alt="logo constructeur automobile" class="logo">
         <h1>Constructeur automobile</h1>
 
         <nav>

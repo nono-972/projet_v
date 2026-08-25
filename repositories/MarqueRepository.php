@@ -26,4 +26,13 @@ class MarqueRepository {
         }
         return $marques;
     }
+
+    public function create(Marque $marque)
+    {
+        $sql = "INSERT INTO marque (nom) VALUES (:nom);";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            "nom" => $marque->nom
+        ]);
+    }
 }
