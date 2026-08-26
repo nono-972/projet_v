@@ -13,6 +13,7 @@
                 <td><?=$voiture->nom?></td>
                 <td><?=$voiture->puissance?>ch</td>
                 <td class="bold"><?= number_format( $voiture->prix, 0, ',', ' ') ?>€</td>
+                <td><a href="index.php?deleteVoiture=<?= $voiture->id ?>">Effacer</a></td>
             </tr>
             <?php } ?>
         </tbody>

@@ -37,6 +37,8 @@ class VoitureController {
         $nom = $_POST["nom"];
         $marque = new Marque(0, $nom);
         $this->marqueRepository->create($marque);
+        header("location: index.php");
+        exit;
       }
       require __DIR__ . "/../views/formMarque.php";
         echo "<div style= background: white'>";
@@ -44,4 +46,12 @@ class VoitureController {
         var_dump($_POST,$_GET);
         echo "<div>";
     }
+
+    public function deleteVoiture($id)
+    {
+        $this->voitureRepository->delete($id);
+        header("location: index.php");
+        exit;
+    }
+
 }

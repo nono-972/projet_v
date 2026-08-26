@@ -64,4 +64,16 @@ class VoitureRepository {
         }
         return $voitures;
     }
+
+    /**
+     * Cette va envoyer une requête de suppressionvers la table voiture
+     */
+    public function delete(int $id)
+    {
+        $sql = "DELETE FROM voiture WHERE id = :id;";
+        $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                "id" => $id,
+            ]);
+    }
 }

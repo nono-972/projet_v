@@ -10,6 +10,9 @@ $controller = new VoitureController($voitureRepository, $marqueRepository);
 
 if(isset($_GET['form'])){
     $controller->createMarque();
+}else if (isset($_GET["deleteVoiture"])) {
+    $id = $_GET["deleteVoiture"];
+    $controller->deleteVoiture($id);
 }else{
     $controller->home();
 }
