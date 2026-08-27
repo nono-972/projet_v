@@ -35,4 +35,5 @@ class MarqueRepository {
             "nom" => $marque->nom
         ]);
     }
+
 }

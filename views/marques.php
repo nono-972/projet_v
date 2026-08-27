@@ -7,14 +7,13 @@
     <table>
         <tbody>
             <?php
-            foreach ($voitures as $voiture) {
+            foreach ($marques as $marque) {
                 ?>
                 <tr>
-                <td><?=$voiture->nom?></td>
-                <td><?=$voiture->puissance?>ch</td>
-                <td class="bold"><?= number_format( $voiture->prix, 0, ',', ' ') ?>€</td>
-                <td><a href="index.php?deleteVoiture=<?= $voiture->id ?>">Effacer</a></td>
-                <td><a href="index.php?action=voiture&id=<?= $voiture->id ?>">Editer</a></td>
+                <td><?=$marque->nom?></td>
+                <td class="bold"<?=$marque->id?>>voir</td>
+                <td><a href="">Effacer</a></td>
+                <td><a href="">Editer</a></td>
             </tr>
             <?php } ?>
         </tbody>

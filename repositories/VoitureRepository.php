@@ -42,6 +42,29 @@ class VoitureRepository {
         return $voitures;
     }
 
+    public function findById(int $id)
+    {
+        $sql = "SELECT * FROM voiture WHERE id=:id;";
+        $stmt = $this ->pdo->prepare($sql);
+        $stmt->execute([
+            "id" => $id,
+        ]);
+
+        $row =$stmt->fetch(PDO::FETCH_ASSOC);
+        if (!$row) {
+            return null;
+        }
+
+     $voiture = new Voiture(
+        $row["id"],
+        $row["nom"],
+        $row["puissance"],
+        $row["prix"],
+        $row["marque_id"],
+        ); 
+        return $voiture;
+    }
+
     public function findByMarqueId(int $marqueId): array
     {
         $sql = "
@@ -65,6 +88,24 @@ class VoitureRepository {
         return $voitures;
     }
 
+    public function create(Voiture $voiture): int
+    {
+        $sql = "
+         INSERT INTO voiture (nom, puissance, prix, marque_id)
+         VALUES (:nom, :puissance, :prix, :marque_id)
+        ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt ->execute([
+            "nom"=> $voiture->nom,
+            "puissance"=> $voiture->puissance,
+            "prix"=> $voiture->prix,
+            "marque_id"=> $voiture->marque_id
+        ]);
+
+        return (int) $this->pdo->lastInsertId();
+    }
+
     /**
      * Cette va envoyer une requête de suppressionvers la table voiture
      */
@@ -76,4 +117,19 @@ class VoitureRepository {
                 "id" => $id,
             ]);
     }
+
+    public function edit(Voiture $voiture)
+    {
+        $sql = "UPDATE voiture SET (nom=:n, puissance=:p, prix=:pr, marque_id=:m) WHERE id=:;";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            "id"=>$voiture->id,
+            "n"=>$voiture->nom,
+            "p"=>$voiture->puissance,
+            "pr"=>$voiture->prix,
+            "m"=>$voiture->marque_id
+        ]);
+    }
+
+
 }

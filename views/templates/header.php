@@ -15,6 +15,9 @@
         <nav>
                 <ul>
                     <li><a href="index.php">Accueil</a></li>
+                    <li><a href="index.php?action=marque">Ajouter une marque</a></li>
+                    <li><a href="index.php?action=voiture">Ajouter une voiture</a></li>
+                    <li><a href="index.php?action=voiture&id=">Mise à jour</a></li>
                     <?php
                     foreach ($marques as $marque) {
                     ?>
