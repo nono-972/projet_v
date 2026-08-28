@@ -10,10 +10,10 @@
             foreach ($marques as $marque) {
                 ?>
                 <tr>
-                <td><?=$marque->nom?></td>
-                <td class="bold"<?=$marque->id?>>voir</td>
-                <td><a href="">Effacer</a></td>
-                <td><a href="">Editer</a></td>
+                <td class="bold"><?=$marque->nom?></td>
+                <td><a href="index.php?marque=<?= $marque->id ?>">voir</a></td>
+                <td><a href="index.php?deleteMarque=<?= $marque->id ?>">Effacer</a></td>
+                <td><a href="index.php?action=marque&id=<?= $marque->id ?>">Editer</a></td>
             </tr>
             <?php } ?>
         </tbody>

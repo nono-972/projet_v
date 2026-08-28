@@ -4,13 +4,13 @@ require "templates/header.php";
 
 <main>
     
-    <h2>Ajouter une Marque</h2>
+    <h2><?= $titre ?></h2>
 
     <form action="" method="post">
         <label for="nom">Nom :</label>
-        <input type="text" name="nom" id="nom">
+        <input type="text" name="nom" id="nom" value="<?= isset($marque) ? htmlspecialchars($marque->nom): "" ?>">
           
-        <button type="submit">Creer</button>
+        <button type="submit"><?= $button ?></button>
     </form>
 </main>
 

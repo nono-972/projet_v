@@ -31,6 +31,9 @@ class VoitureController {
 
     public function createMarque(): void 
     {
+
+       $titre = "Editer une marque";
+        $button ="Modifier";
       $marques = $this->marqueRepository->findAll();
 
       if($_SERVER["REQUEST_METHOD"] === "POST"){
@@ -82,10 +85,46 @@ class VoitureController {
         $button ="Modifier";
         $id = $_GET["id"];
         $voiture = $this->voitureRepository->findById($id);
+
+        if ($_SERVER["REQUEST_METHOD"]=== "POST"){
+
+          $voiture->nom = $_POST["nom"];
+          $voiture->puissance = $_POST["puissance"];
+          $voiture->prix = $_POST["prix"];
+          $voiture->marque_id = $_POST["marque"];
+
+          $this->voitureRepository->edit($voiture);
+
+          header("Location: index.php");
+          exit;
+        }
+
         require __DIR__ . "/../views/formvoiture.php";
     }
 
-        public function AllMarques(): void
+    public function editMarque(): void
+    {
+        $marques = $this->marqueRepository->findAll();
+        $titre = "Editer une Marque";
+        $button ="Modifier";
+        $id = $_GET["id"];
+        $marque = $this->marqueRepository->findById($id);
+
+        if ($_SERVER["REQUEST_METHOD"]=== "POST"){
+
+          $marque->nom = $_POST["nom"];
+
+          $this->MarqueRepository->edit($marque);
+
+          header("Location: index.php");
+          exit;
+        }
+
+        require __DIR__ . "/../views/formMarque.php";
+    }
+
+       
+    public function AllMarques(): void
     {
         $marques = $this->marqueRepository->findAll();
         require __DIR__ . "/../views/marques.php";
@@ -98,5 +137,21 @@ class VoitureController {
         header("location: index.php");
         exit;
     }
+
+    public function deleteMarque($id)
+    {
+        try {
+            
+            $this->marqueRepository->delete($id);
+            header("location: index.php");
+            exit;
+        } catch (Exception $e) {
+            $marques = $this->marqueRepository->findAll();
+            $message = $e->getMessage();
+            require __DIR__ . "/../views/home.php";
+           
+        }
+    }
+
 
 }

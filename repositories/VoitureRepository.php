@@ -120,7 +120,7 @@ class VoitureRepository {
 
     public function edit(Voiture $voiture)
     {
-        $sql = "UPDATE voiture SET (nom=:n, puissance=:p, prix=:pr, marque_id=:m) WHERE id=:;";
+        $sql = "UPDATE voiture SET nom=:n, puissance=:p, prix=:pr, marque_id=:m WHERE id=:id;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
             "id"=>$voiture->id,
@@ -130,6 +130,6 @@ class VoitureRepository {
             "m"=>$voiture->marque_id
         ]);
     }
-
+    
 
 }

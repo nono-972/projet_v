@@ -15,13 +15,15 @@
         <nav>
                 <ul>
                     <li><a href="index.php">Accueil</a></li>
+                    <li><a href="index.php?marques=1">voir marques</a></li>
                     <li><a href="index.php?action=marque">Ajouter une marque</a></li>
                     <li><a href="index.php?action=voiture">Ajouter une voiture</a></li>
                     <li><a href="index.php?action=voiture&id=">Mise à jour</a></li>
+                    <li><a href="index.php?action=marque&id=">sauvegarde</a></li>
                     <?php
-                    foreach ($marques as $marque) {
+                    foreach ($marques as $headermarque) {
                     ?>
-                    <li><a href="?marque=<?= $marque->id ?>"><?= $marque->nom ?></a></li>
+                    <li><a href="?marque=<?= $headermarque->id ?>"><?= $headermarque->nom ?></a></li>
                     <?php } ?>
                 </ul>
         </nav>
